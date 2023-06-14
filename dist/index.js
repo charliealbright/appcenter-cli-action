@@ -59,7 +59,7 @@ function run() {
             else {
                 yield exec.exec('npm install -g appcenter-cli');
             }
-            yield exec.exec('appcenter help');
+            yield exec.exec(`${command} --token ${token}`);
         }
         catch (error) {
             if (error instanceof Error)
