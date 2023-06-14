@@ -27,5 +27,5 @@ jobs:
       - uses: ./
         with:
           token: ${{ secrets.APPCENTER_TOKEN }}
-          command: appcenter help
+          command: appcenter help; ls -al
           cliVersionOverride: 2.13.0
