@@ -1,16 +1,27 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import * as exec from '@actions/exec'
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
+    const token: string = core.getInput('token')
+    const command: string = core.getInput('command')
+    const cliVersionOverride = core.getInput('cliVersionOverride')
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+    if (!token) {
+      core.setFailed("No value set for input: 'token'")
+    }
 
-    core.setOutput('time', new Date().toTimeString())
+    if (!command) {
+      core.setFailed("No value set for input: 'command'")
+    }
+
+    if (cliVersionOverride) {
+      await exec.exec(`npm install -g appcenter-cli@${cliVersionOverride}`)
+    } else {
+      await exec.exec('npm install -g appcenter-cli')
+    }
+
+    await exec.exec('appcenter help')
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }
