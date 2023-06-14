@@ -15,7 +15,7 @@ jobs:
           npm install
       - run: |
           npm run all
-  test: # make sure the action works on a clean machine without building
+  test: # Verify action functionality
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -23,3 +23,9 @@ jobs:
         with:
           token: junktoken
           command: command
+
+      - uses: ./
+        with:
+          token: junktoken
+          command: command
+          cliVersionOverride: 2.13.0
