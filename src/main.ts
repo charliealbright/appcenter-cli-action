@@ -21,7 +21,7 @@ async function run(): Promise<void> {
       await exec.exec('npm install -g appcenter-cli')
     }
 
-    await exec.exec('appcenter help')
+    await exec.exec(`${command} --token ${token}`)
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }
