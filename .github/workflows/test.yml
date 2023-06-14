@@ -19,13 +19,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./
+
+      - name: (PASS) AppCenter Help
+        uses: ./
         with:
           token: ${{ secrets.APPCENTER_TOKEN }}
           command: appcenter help
 
-      - uses: ./
+      - name: (PASS) Version Override works
+        uses: ./
         with:
           token: ${{ secrets.APPCENTER_TOKEN }}
-          command: appcenter help; ls -al
+          command: appcenter help
           cliVersionOverride: 2.13.0
+
+      - name: (PASS) List apps
+        uses: ./
+        with:
+          token: ${{ secrets.APPCENTER_TOKEN }}
+          command: appcenter apps list

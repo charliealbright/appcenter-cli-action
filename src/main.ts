@@ -15,6 +15,10 @@ async function run(): Promise<void> {
       core.setFailed("No value set for input: 'command'")
     }
 
+    if (!command.startsWith('appcenter')) {
+      core.setFailed("'command' input must start with the 'appcenter' keyword.")
+    }
+
     if (cliVersionOverride) {
       await exec.exec(`npm install -g appcenter-cli@${cliVersionOverride}`)
     } else {

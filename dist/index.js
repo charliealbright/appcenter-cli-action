@@ -53,6 +53,9 @@ function run() {
             if (!command) {
                 core.setFailed("No value set for input: 'command'");
             }
+            if (!command.startsWith('appcenter')) {
+                core.setFailed("'command' input must start with the 'appcenter' keyword.");
+            }
             if (cliVersionOverride) {
                 yield exec.exec(`npm install -g appcenter-cli@${cliVersionOverride}`);
             }
