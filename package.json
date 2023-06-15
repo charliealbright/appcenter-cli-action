@@ -1,6 +1,6 @@
 {
   "name": "appcenter-cli-action",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Github Action for installing the AppCenter CLI and running commands with it.",
   "main": "lib/main.js",
