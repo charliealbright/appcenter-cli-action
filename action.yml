@@ -15,5 +15,5 @@ inputs:
     required: false
     description: 'Configure this action to use a specific version of the CLI'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
