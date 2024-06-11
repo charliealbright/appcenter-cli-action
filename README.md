@@ -2,6 +2,10 @@
 
 Github Action for installing the AppCenter CLI and running commands with it.
 
+> ⚠️ ***FYI: AppCenter is scheduled to be sunset on March 31st, 2025. You can read more about it [here](https://learn.microsoft.com/en-us/appcenter/retirement).***
+>
+> With this sunset in mind, no future improvements are planned for this Github Action. Minor fixes and maintenance will be performed until the sunset date is reached.
+
 ## Basic Usage
 
 ```yaml
